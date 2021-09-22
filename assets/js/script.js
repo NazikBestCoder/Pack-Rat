@@ -10,11 +10,12 @@ var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=-110.5471695&lat
 
 fetch (nasaURL)
     .then (function (response){
-        return response.text();
+        return response.blob();
     })
     .then (function (data){
         console.log(data);
-        // var satImage = $("<img>").attr("src", nasaURL);
-        // $(bodyEl).append(satImage);
+        var nasaImage = URL.createObjectURL(data);
+        var satImage = $("<img>").attr("src", nasaImage);
+        $(bodyEl).append(satImage);
     })
 

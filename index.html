@@ -13,14 +13,34 @@
   </head>
   <body>
     <header>
-      <h1>This is content</h1>
+      <h1 class="title has-text-grey is-2">This is content</h1>
     </header>
-    <div class="columns">
-      <div class="button is-large is-warning column">1</div>
-      <div class="button is-small is-black column">2</div>
-      <div class="button is-danger column">3</div>
-      <div class="button is-info is-outlined column">4</div>
-      <div class="button is-primary column">5</div>
+    <div class="container">
+      <div class="notification is-primary">
+        This container is <strong>centered</strong> on desktop and larger
+        viewports.
+      </div>
+      <div class="container is-fluid">
+        <div class="notification is-primary">
+          This container is <strong>fluid</strong>: it will have a 32px gap on
+          either side, on any viewport size.
+        </div>
+      </div>
+      <div class="columns is-multiline">
+        <div class="level">
+          <p class="column is-half">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque et
+            molestiae nisi, distinctio similique suscipit perspiciatis porro
+            aliquam doloribus, quia rerum non laboriosam odit! Animi sequi
+            commodi optio voluptate sed!
+          </p>
+          <div class="button is-warning">1</div>
+          <div class="button is-small is-black">2</div>
+          <div class="button is-danger">3</div>
+        </div class="column is-half">
+        <div class="block button is-info is-outlined column">4</div>
+        <div class="block button is-success is-outlined">5</div>
+      </div>
     </div>
   </body>
 </html>

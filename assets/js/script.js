@@ -6,14 +6,15 @@ var bodyEl = $(".body");
 // "latitude": "44.59824417",
 // "longitude": "-110.5471695",
 
-var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=-110.54&lat=44.59&date=2014-02-01&api_key=" + nasaApiKey;
+var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=-110.5471695&lat=44.59824417&date=2020-09-22&api_key=" + nasaApiKey;
 
 fetch (nasaURL)
     .then (function (response){
-        return response.json();
+        return response.text();
     })
     .then (function (data){
-        var satImage = $("<img>").attr("src", nasaURL);
-        $(bodyEl).append(satImage);
+        console.log(data);
+        // var satImage = $("<img>").attr("src", nasaURL);
+        // $(bodyEl).append(satImage);
     })
 

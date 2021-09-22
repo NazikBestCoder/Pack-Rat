@@ -6,7 +6,8 @@ var lat = ;
 var lon = ;
 var stateCode = ;
 var searchBtn = ;
-
+var checkList = $(".checklist");
+var weatherEl = $(".weather");
 
 // "latitude": "44.59824417",
 // "longitude": "-110.5471695",

@@ -11,7 +11,7 @@ var stateCode = ;
 
 var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=-110.5471695&lat=44.59824417&date=2020-09-22&api_key=" + nasaApiKey;
 var natParkURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + stateCode + "&api_key=" + natParkApiKey;
-var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat "&lon=" + lon "&appid=" + oWApiKey;
+var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + oWApiKey;
 
 
 fetch (nasaURL)

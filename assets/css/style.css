@@ -36,3 +36,27 @@ h2 {
   font-size: 150%;
   font-weight: bold;
 }
+
+@media screen and (max-width: 768px) {
+  .dropdown,
+  .dropdown-menu,
+  #dropdown-menu4 {
+    justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  nav {
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
+}

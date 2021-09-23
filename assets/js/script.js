@@ -5,9 +5,9 @@ var bodyEl = $(".body");
 var lat;
 var lon;
 var searchBtn;
+var selSection = $("#sel-section");
 var selectText = $(".select-text");
-var stateSelect = $(".state-select");
-var dropCont = $(".select");
+var stateSelect = $("#state-select");
 var checkList = $(".checklist");
 var weatherEl = $(".weather");
 var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=-110.5471695&lat=44.59824417&date=2020-09-22&api_key=" + nasaApiKey;
@@ -23,7 +23,7 @@ var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + 
     // 4. Call function for weather based on the lat/lon from the state park
     // 5. Call function for the satellite image based on the lat/lon from the state park 
 
-dropCont.on("change", function () {
+stateSelect.on("change", function () {
     console.log($(this).val());
     var stateCode = $(this).val();
     var natParkURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + stateCode + "&api_key=" + natParkApiKey;
@@ -32,26 +32,26 @@ dropCont.on("change", function () {
         .then(function (response) {
             return response.json();
         })
-        .then(function (data) {
-            console.log(data);
-            parkCodeHandler(data);
+        .then(function (natParks) {
+            console.log(natParks.data);
+            parkCodeHandler(natParks.data);
         })
 
-    
-        
+
+
 });
 
-function parkCodeHandler(data) {
+function parkCodeHandler() {
     $(selectText).text("Select a Park");
     var parkSelect = $("<select>").attr("class", "select ml-2 park-select");
-    $(stateSelect).append(parkSelect);
+    $(selSection).append(parkSelect);
     // for loop iterating data from API pull and creating <option> tags 
     // for each of them and appending them to parkSelect
     // take data from the API pull and put it into the <option>s and then append
-    $.each(function (data.data){
-
+    $.each(function (natParks){
+        console.log(natParks);
     })
-    
+
 }
 
 

@@ -37,3 +37,20 @@ h2 {
   font-size: 150%;
   font-weight: bold;
 }
+
+@media screen and (max-width: 768px) {
+  .state {
+    display: flex;
+    justify-content: center;
+  }
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  ul {
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
+}

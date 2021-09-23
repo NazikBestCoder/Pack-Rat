@@ -50,11 +50,10 @@ function parkCodeHandler(parkData) {
     $(selectText).text("Select a Park");
     var parkSelect = $("<select>").attr("class", "select ml-2 park-select");
     $(selSection).append(parkSelect);
-    // for loop iterating data from API pull and creating <option> tags 
-    // for each of them and appending them to parkSelect
-    // take data from the API pull and put it into the <option>s and then append
     $.each(parkData, function (index, value){
         console.log(value.fullName);
+        var parkOptions = $("<option>").text(value.fullName).attr("class", "dropdown-item");
+        $(parkSelect).append(parkOptions);
     })
 }
 

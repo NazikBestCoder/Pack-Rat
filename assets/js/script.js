@@ -8,14 +8,19 @@ var stateCode = ;
 var searchBtn = ;
 var checkList = $(".checklist");
 var weatherEl = $(".weather");
-
-// "latitude": "44.59824417",
-// "longitude": "-110.5471695",
-
 var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=-110.5471695&lat=44.59824417&date=2020-09-22&api_key=" + nasaApiKey;
 var natParkURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + stateCode + "&api_key=" + natParkApiKey;
 var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + oWApiKey;
 
+
+// General path forward
+    // State input and then park code input
+    // Call function from NPS, based on state code input 
+        // This brings up a list of the parks that are in that state, with name and park code
+    // Call function for the state park that is on the button click from the park code input search
+        // This will search the NPS for the specific park that has been selected
+    // Call function for weather based on the lat/lon from the state park
+    // call function for the satellite image based on the lat/lon from the state park 
 
 fetch (nasaURL)
     .then (function (response){

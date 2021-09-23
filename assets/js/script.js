@@ -34,17 +34,23 @@ dropCont.on("change", function () {
         })
         .then(function (data) {
             console.log(data);
+            parkCodeHandler(data);
         })
 
     
-    
+        
 });
 
-function parkCodeHandler() {
+function parkCodeHandler(data) {
     $(selectText).text("Select a Park");
     var parkSelect = $("<select>").attr("class", "select ml-2 park-select");
     $(stateSelect).append(parkSelect);
+    // for loop iterating data from API pull and creating <option> tags 
+    // for each of them and appending them to parkSelect
+    // take data from the API pull and put it into the <option>s and then append
+    $.each(function (data.data){
 
+    })
     
 }
 

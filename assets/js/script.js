@@ -33,7 +33,12 @@ stateSelect.on("change", function () {
             return response.json();
         })
         .then(function (natParks) {
-            console.log(natParks.data);
+            var parkData = natParks.data;
+            console.log(parkData);
+            $.each(parkData, function(index, value){
+                console.log(value.fullName);
+                console.log(value.parkCode);
+            });
             parkCodeHandler(natParks.data);
         })
 
@@ -51,7 +56,6 @@ function parkCodeHandler() {
     $.each(function (natParks){
         console.log(natParks);
     })
-
 }
 
 

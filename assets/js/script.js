@@ -5,6 +5,8 @@ var bodyEl = $(".body");
 var lat;
 var lon;
 var searchBtn;
+var selectText = $(".select-text");
+var stateSelect = $(".state-select");
 var dropCont = $(".select");
 var checkList = $(".checklist");
 var weatherEl = $(".weather");
@@ -39,7 +41,10 @@ dropCont.on("change", function () {
 });
 
 function parkCodeHandler() {
-    $("<select>");
+    $(selectText).text("Select a Park");
+    var parkSelect = $("<select>").attr("class", "select ml-2 park-select");
+    $(stateSelect).append(parkSelect);
+
     
 }
 

@@ -34,11 +34,6 @@ stateSelect.on("change", function () {
         })
         .then(function (natParks) {
             var parkData = natParks.data;
-            console.log(parkData);
-            $.each(parkData, function(index, value){
-                // console.log(value.fullName);
-                // console.log(value.parkCode);
-            });
             parkCodeHandler(parkData);
         })
 

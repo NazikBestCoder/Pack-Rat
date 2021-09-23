@@ -1,7 +1,28 @@
+* {
+  font-family: "Lora", serif;
+  font-weight: bold;
+}
+
+html {
+  background-color: #f0dac0;
+}
+
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("../images/hero.jpg");
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   margin-bottom: 50px;
+}
+
+.level {
+  align-self: flex-end;
+}
+
+.title {
+  align-self: center;
+}
+
+h1 {
+  font-family: "Rye", cursive;
 }

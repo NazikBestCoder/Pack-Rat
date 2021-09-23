@@ -48,11 +48,8 @@ function parkCodeHandler(data) {
     // for loop iterating data from API pull and creating <option> tags 
     // for each of them and appending them to parkSelect
     // take data from the API pull and put it into the <option>s and then append
-    $.each(function (data.data){
-
-    })
-    
 }
+
 
 
 

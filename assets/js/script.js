@@ -13,14 +13,14 @@ var natParkURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + stateCode
 var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + oWApiKey;
 
 
-// General path forward
-    // State input and then park code input
-    // Call function from NPS, based on state code input 
-        // This brings up a list of the parks that are in that state, with name and park code
-    // Call function for the state park that is on the button click from the park code input search
-        // This will search the NPS for the specific park that has been selected
-    // Call function for weather based on the lat/lon from the state park
-    // call function for the satellite image based on the lat/lon from the state park 
+// General path forward:
+    // 1. State input and then park code input
+    // 2. Call function from NPS, based on state code input 
+        // 2a. This brings up a list of the parks that are in that state, with name and park code
+    // 3. Call function for the state park that is on the button click from the park code input search
+        // 3a. This will search the NPS for the specific park that has been selected
+    // 4. Call function for weather based on the lat/lon from the state park
+    // 5. Call function for the satellite image based on the lat/lon from the state park 
 
 fetch (nasaURL)
     .then (function (response){

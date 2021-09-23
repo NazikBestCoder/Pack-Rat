@@ -6,6 +6,7 @@ var lat;
 var lon;
 var stateCode;
 var searchBtn;
+var dropCont = $(".select");
 var checkList = $(".checklist");
 var weatherEl = $(".weather");
 var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=-110.5471695&lat=44.59824417&date=2020-09-22&api_key=" + nasaApiKey;
@@ -22,15 +23,42 @@ var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + 
     // 4. Call function for weather based on the lat/lon from the state park
     // 5. Call function for the satellite image based on the lat/lon from the state park 
 
-fetch (nasaURL)
-    .then (function (response){
-        return response.blob();
-    })
-    .then (function (data){
-        console.log(data);
-        var nasaImage = URL.createObjectURL(data);
-        var satImage = $("<img>").attr("src", nasaImage);
-        $(bodyEl).append(satImage);
-    })
+dropCont.on("change", function(){
+    console.log($(this).val());
+});
+
+
+
+
 
 // on click for dropdown content, event target item text or value to generate park list dropdown
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// fetch (nasaURL)
+//     .then (function (response){
+//         return response.blob();
+//     })
+//     .then (function (data){
+//         console.log(data);
+//         var nasaImage = URL.createObjectURL(data);
+//         var satImage = $("<img>").attr("src", nasaImage);
+//         $(bodyEl).append(satImage);
+//     })
+

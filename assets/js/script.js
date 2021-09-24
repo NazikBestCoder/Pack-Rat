@@ -25,7 +25,6 @@ var toPack = [];
 // 5. Call function for the satellite image based on the lat/lon from the state park 
 
 stateSelect.on("change", function () {
-    console.log($(this).val());
     var stateCode = $(this).val();
     var natParkURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + stateCode + "&api_key=" + natParkApiKey;
 

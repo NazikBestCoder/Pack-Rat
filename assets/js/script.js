@@ -12,16 +12,19 @@ var checkList = $(".checklist");
 var weatherEl = $(".weather");
 var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=-110.5471695&lat=44.59824417&date=2020-09-22&api_key=" + nasaApiKey;
 var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + oWApiKey;
+var packingList = $(".packing-list");
+var addBtn = $("#add-item");
+var toPack = [];
 
 
 // General path forward:
-    // 1. State input [STATE INPUT WORKS AND LOGS PROPERLY] and then park code input
-    // 2. Call function from NPS, based on state code input 
-        // 2a. This brings up a list of the parks that are in that state, with name and park code
-    // 3. Call function for the state park that is on the button click from the park code input search
-        // 3a. This will search the NPS for the specific park that has been selected
-    // 4. Call function for weather based on the lat/lon from the state park
-    // 5. Call function for the satellite image based on the lat/lon from the state park 
+// 1. State input [STATE INPUT WORKS AND LOGS PROPERLY] and then park code input
+// 2. Call function from NPS, based on state code input 
+// 2a. This brings up a list of the parks that are in that state, with name and park code
+// 3. Call function for the state park that is on the button click from the park code input search
+// 3a. This will search the NPS for the specific park that has been selected
+// 4. Call function for weather based on the lat/lon from the state park
+// 5. Call function for the satellite image based on the lat/lon from the state park 
 
 stateSelect.on("change", function () {
     console.log($(this).val());
@@ -45,13 +48,41 @@ function parkCodeHandler(parkData) {
     $(selectText).text("Select a Park");
     var parkSelect = $("<select>").attr("class", "select ml-2 park-select");
     $(selSection).append(parkSelect);
-    $.each(parkData, function (index, value){
+    $.each(parkData, function (index, value) {
         console.log(value.fullName);
         var parkOptions = $("<option>").text(value.fullName).attr("class", "dropdown-item");
         $(parkSelect).append(parkOptions);
     })
 }
 
+function renderPackList() {
+    var packListHistory = JSON.parse(localStorage.getItem("packingList"));
+
+    if (packListHistory !== null) {
+        toPack = packListHistory;
+        $.each(packListHistory, function (index, val) {
+            packingList.append("<input type='checkbox'><label> " + packListHistory[index] + "</label><br />")
+            console.log(packListHistory[index]);
+        });
+    }
+    else {
+        return;
+    }
+
+}
+
+renderPackList();
+
+addBtn.on("click", function (event) {
+    event.preventDefault();
+    var listItem = $("#pack-item").val();
+    // on click of add button, i want to create a checkbox and label
+    // make the val of listItem what the checkbox label will say
+    packingList.append("<input type='checkbox'><label> " + listItem + "</label><br />");
+
+    toPack.push(listItem);
+    localStorage.setItem("packingList", JSON.stringify(toPack));
+})
 
 
 

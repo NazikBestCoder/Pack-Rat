@@ -10,7 +10,6 @@ var selectText = $(".select-text");
 var stateSelect = $("#state-select");
 var checkList = $(".checklist");
 var weatherEl = $(".weather");
-var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=-110.5471695&lat=44.59824417&date=2020-09-22&api_key=" + nasaApiKey;
 var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + oWApiKey;
 var packingList = $(".packing-list");
 var addBtn = $("#add-item");
@@ -40,18 +39,32 @@ stateSelect.on("change", function () {
             parkCodeHandler(parkData);
         })
 
-
-
 });
+
+// on click for dropdown content, generate a park list dropdown for that state.
 
 function parkCodeHandler(parkData) {
     $(selectText).text("Select a Park");
     var parkSelect = $("<select>").attr("class", "select ml-2 park-select");
+    console.log(parkSelect);
     $(selSection).append(parkSelect);
     $.each(parkData, function (index, value) {
-        console.log(value.fullName);
-        var parkOptions = $("<option>").text(value.fullName).attr("class", "dropdown-item");
+        var parkOptions = $("<option>").text(value.fullName).attr("class", "dropdown-item").attr("data-lat", value.latitude).attr("data-lon", value.longitude);
         $(parkSelect).append(parkOptions);
+        // need on change for parkSelect
+        console.log(value);
+    });
+    parkSelect.on("change", function (event) {
+        event.stopPropagation();
+        var parkLoc = ($(this).find(":selected").data())
+        // var parkLat = $(this).data("lat");
+        console.log("lat: " + parkLoc.lat);
+        console.log("lon: " + parkLoc.lon);
+
+        lat = parkLoc.lat;
+        lon = parkLoc.lon;
+
+        nasaCall(lat, lon)
     })
 }
 
@@ -84,37 +97,20 @@ addBtn.on("click", function (event) {
     localStorage.setItem("packingList", JSON.stringify(toPack));
 })
 
+// take lat and lon from parkOptions and pass it into NASA.
+// Make call for Weather nested in NASA api call.
 
 
 
-// on click for dropdown content, event target item text or value to generate park list dropdown
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// fetch (nasaURL)
-//     .then (function (response){
-//         return response.blob();
-//     })
-//     .then (function (data){
-//         console.log(data);
-//         var nasaImage = URL.createObjectURL(data);
-//         var satImage = $("<img>").attr("src", nasaImage);
-//         $(bodyEl).append(satImage);
-//     })
-
+function nasaCall(lat, lon) {
+    var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=" + lon + "&lat=" + lat + "&dim=0.3&date=2020-09-24&api_key=" + nasaApiKey;
+    fetch(nasaURL)
+        .then(function (response) {
+            return response.blob();
+        })
+        .then(function (data) {
+            console.log(data);
+            var nasaImage = URL.createObjectURL(data);
+            $(".image").attr("src", nasaImage);
+        })
+}

@@ -81,7 +81,6 @@ function weatherCall(lat, lon) {
             return response.json();
         })
         .then(function(data) {
-            console.log(data);
             var temp = data.current.temp;
             var wind = data.current.wind_speed;
             var humidity = data.current.humidity;
@@ -101,7 +100,6 @@ function renderPackList() {
         toPack = packListHistory;
         $.each(packListHistory, function (index, val) {
             packingList.append("<input type='checkbox'><label> " + packListHistory[index] + "</label><br />")
-            console.log(packListHistory[index]);
         });
     }
     else {

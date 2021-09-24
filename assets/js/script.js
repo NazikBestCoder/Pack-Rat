@@ -51,11 +51,17 @@ function parkCodeHandler(parkData) {
         // need on change for parkSelect
         console.log(value);
     });
-    parkSelect.on("change", function(event) {
+    parkSelect.on("change", function (event) {
         event.stopPropagation();
-        console.log(event.target.dataset)
-        var parkLat = $(this).data("lat");
-        // console.log(parkLat);
+        var parkLoc = ($(this).find(":selected").data())
+        // var parkLat = $(this).data("lat");
+        console.log("lat: " + parkLoc.lat);
+        console.log("lon: " + parkLoc.lon);
+
+        lat = parkLoc.lat;
+        lon = parkLoc.lon;
+
+        nasaCall(lat, lon)
     })
 }
 
@@ -65,16 +71,15 @@ function parkCodeHandler(parkData) {
 
 
 
-
-var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=" + lon + "&lat=" + lat + "&api_key=" + nasaApiKey;
-fetch(nasaURL)
-    .then(function (response) {
-        return response.blob();
-    })
-    .then(function (data) {
-        console.log(data);
-        var nasaImage = URL.createObjectURL(data);
-        var satImage = $("<img>").attr("src", nasaImage);
-        $(bodyEl).append(satImage);
-    })
-
+function nasaCall(lat, lon) {
+    var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=" + lon + "&lat=" + lat + "&dim=0.3&date=2020-09-24&api_key=" + nasaApiKey;
+    fetch(nasaURL)
+        .then(function (response) {
+            return response.blob();
+        })
+        .then(function (data) {
+            console.log(data);
+            var nasaImage = URL.createObjectURL(data);
+            $(".image").attr("src", nasaImage);
+        })
+}

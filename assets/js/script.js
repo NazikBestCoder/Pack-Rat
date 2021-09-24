@@ -11,6 +11,9 @@ var stateSelect = $("#state-select");
 var checkList = $(".checklist");
 var weatherEl = $(".weather");
 var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + oWApiKey;
+var packingList = $(".packing-list");
+var addBtn = $("#add-item");
+var toPack = [];
 
 
 // General path forward:
@@ -65,6 +68,34 @@ function parkCodeHandler(parkData) {
     })
 }
 
+function renderPackList() {
+    var packListHistory = JSON.parse(localStorage.getItem("packingList"));
+
+    if (packListHistory !== null) {
+        toPack = packListHistory;
+        $.each(packListHistory, function (index, val) {
+            packingList.append("<input type='checkbox'><label> " + packListHistory[index] + "</label><br />")
+            console.log(packListHistory[index]);
+        });
+    }
+    else {
+        return;
+    }
+
+}
+
+renderPackList();
+
+addBtn.on("click", function (event) {
+    event.preventDefault();
+    var listItem = $("#pack-item").val();
+    // on click of add button, i want to create a checkbox and label
+    // make the val of listItem what the checkbox label will say
+    packingList.append("<input type='checkbox'><label> " + listItem + "</label><br />");
+
+    toPack.push(listItem);
+    localStorage.setItem("packingList", JSON.stringify(toPack));
+})
 
 // take lat and lon from parkOptions and pass it into NASA.
 // Make call for Weather nested in NASA api call.

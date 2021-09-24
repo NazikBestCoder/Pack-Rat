@@ -13,7 +13,6 @@ var weatherEl = $(".weather");
 var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=-110.5471695&lat=44.59824417&date=2020-09-22&api_key=" + nasaApiKey;
 var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + oWApiKey;
 var packingList = $(".packing-list");
-
 var addBtn = $("#add-item");
 var toPack = [];
 
@@ -56,19 +55,35 @@ function parkCodeHandler(parkData) {
     })
 }
 
+function renderPackList() {
+    var packListHistory = JSON.parse(localStorage.getItem("packingList"));
+
+    if (packListHistory !== null) {
+        toPack = packListHistory;
+        $.each(packListHistory, function (index, val) {
+            packingList.append("<input type='checkbox'><label> " + packListHistory[index] + "</label><br />")
+            console.log(packListHistory[index]);
+        });
+    }
+    else {
+        return;
+    }
+
+}
+
+renderPackList();
 
 addBtn.on("click", function (event) {
-    var listItem = $("#pack-item").val();
     event.preventDefault();
+    var listItem = $("#pack-item").val();
     // on click of add button, i want to create a checkbox and label
     // make the val of listItem what the checkbox label will say
-    packingList.append("<input type='checkbox'><label>" + listItem + "</label><br />");
-    console.log(listItem);
+    packingList.append("<input type='checkbox'><label> " + listItem + "</label><br />");
 
     toPack.push(listItem);
     localStorage.setItem("packingList", JSON.stringify(toPack));
-
 })
+
 
 
 

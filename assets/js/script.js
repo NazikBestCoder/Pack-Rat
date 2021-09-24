@@ -10,18 +10,17 @@ var selectText = $(".select-text");
 var stateSelect = $("#state-select");
 var checkList = $(".checklist");
 var weatherEl = $(".weather");
-var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=-110.5471695&lat=44.59824417&date=2020-09-22&api_key=" + nasaApiKey;
 var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + oWApiKey;
 
 
 // General path forward:
-    // 1. State input [STATE INPUT WORKS AND LOGS PROPERLY] and then park code input
-    // 2. Call function from NPS, based on state code input 
-        // 2a. This brings up a list of the parks that are in that state, with name and park code
-    // 3. Call function for the state park that is on the button click from the park code input search
-        // 3a. This will search the NPS for the specific park that has been selected
-    // 4. Call function for weather based on the lat/lon from the state park
-    // 5. Call function for the satellite image based on the lat/lon from the state park 
+// 1. State input [STATE INPUT WORKS AND LOGS PROPERLY] and then park code input
+// 2. Call function from NPS, based on state code input 
+// 2a. This brings up a list of the parks that are in that state, with name and park code
+// 3. Call function for the state park that is on the button click from the park code input search
+// 3a. This will search the NPS for the specific park that has been selected
+// 4. Call function for weather based on the lat/lon from the state park
+// 5. Call function for the satellite image based on the lat/lon from the state park 
 
 stateSelect.on("change", function () {
     console.log($(this).val());
@@ -37,53 +36,45 @@ stateSelect.on("change", function () {
             parkCodeHandler(parkData);
         })
 
-
-
 });
+
+// on click for dropdown content, generate a park list dropdown for that state.
 
 function parkCodeHandler(parkData) {
     $(selectText).text("Select a Park");
     var parkSelect = $("<select>").attr("class", "select ml-2 park-select");
+    console.log(parkSelect);
     $(selSection).append(parkSelect);
-    $.each(parkData, function (index, value){
-        console.log(value.fullName);
-        var parkOptions = $("<option>").text(value.fullName).attr("class", "dropdown-item");
+    $.each(parkData, function (index, value) {
+        var parkOptions = $("<option>").text(value.fullName).attr("class", "dropdown-item").attr("data-lat", value.latitude).attr("data-lon", value.longitude);
         $(parkSelect).append(parkOptions);
+        // need on change for parkSelect
+        console.log(value);
+    });
+    parkSelect.on("change", function(event) {
+        event.stopPropagation();
+        console.log(event.target.dataset)
+        var parkLat = $(this).data("lat");
+        // console.log(parkLat);
     })
 }
 
 
-
-
-
-// on click for dropdown content, event target item text or value to generate park list dropdown
-
-
+// take lat and lon from parkOptions and pass it into NASA.
+// Make call for Weather nested in NASA api call.
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// fetch (nasaURL)
-//     .then (function (response){
-//         return response.blob();
-//     })
-//     .then (function (data){
-//         console.log(data);
-//         var nasaImage = URL.createObjectURL(data);
-//         var satImage = $("<img>").attr("src", nasaImage);
-//         $(bodyEl).append(satImage);
-//     })
+var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=" + lon + "&lat=" + lat + "&api_key=" + nasaApiKey;
+fetch(nasaURL)
+    .then(function (response) {
+        return response.blob();
+    })
+    .then(function (data) {
+        console.log(data);
+        var nasaImage = URL.createObjectURL(data);
+        var satImage = $("<img>").attr("src", nasaImage);
+        $(bodyEl).append(satImage);
+    })
 

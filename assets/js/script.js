@@ -44,6 +44,7 @@ stateSelect.on("change", function () {
 function parkCodeHandler(parkData) {
     $(selectText).text("Select a Park");
     var parkSelect = $("<select>").attr("class", "select ml-2 park-select");
+    parkSelect.append($("<option>").text("---").attr("class", "dropdown-item"))
     $(selSection).append(parkSelect);
     $.each(parkData, function (index, value) {
         var parkOptions = $("<option>").text(value.fullName).attr("class", "dropdown-item").attr("data-lat", value.latitude).attr("data-lon", value.longitude);

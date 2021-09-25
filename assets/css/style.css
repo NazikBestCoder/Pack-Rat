@@ -13,12 +13,17 @@ html {
   background-color: #f0dac0;
 }
 
+main,
+footer {
+  color: black;
+}
+
 a {
   color: white;
 }
 
 #contact-us a {
-  color: #4a4a4a;
+  color: black;
 }
 
 .hero-image {

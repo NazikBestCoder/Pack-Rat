@@ -105,7 +105,7 @@ function weatherCall(lat, lon) {
       $("#temp").text("Temp: " + temp + "°F");
       $("#wind").text("Wind Speed: " + wind + " MPH");
       $("#humidity").text("Humidity: " + humidity + "%");
-      $("#uvi").text("UV Index: " + uvi + " ultraviolets?!?!?");
+      $("#uvi").text("UV Index: " + uvi);
     });
 }
 
@@ -117,8 +117,8 @@ function renderPackList() {
     $.each(packListHistory, function (index, val) {
       packingList.append(
         "<input type='checkbox'><label> " +
-          packListHistory[index] +
-          "</label><br />"
+        packListHistory[index] +
+        "</label><br />"
       );
     });
   } else {

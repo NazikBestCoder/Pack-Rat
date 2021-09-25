@@ -24,12 +24,10 @@
     <!-- dropdown of all 50 states first-->
     <div class="level">
       <div class="level-left">
-        <div class="level-item is-align-items-center">
+        <div id="search" class="level-item is-align-items-center">
+
           <p class="ml-5 is-inline-flex select-text">Select a State:</p>
-          <div id="sel-section" class="
-                select
-                is-rounded is-small is-align-items-center is-inline-flex
-              ">
+          <div class="select is-rounded is-small">
             <select id="state-select" class="ml-2">
               <option class="dropdown-item">---</option>
               <option class="dropdown-item">AL</option>
@@ -84,15 +82,16 @@
               <option class="dropdown-item">WI</option>
               <option class="dropdown-item">WY</option>
             </select>
-            <p class="ml-5 is-inline-flex select-text is-size-5">Select a Park:</p>
+          </div>
+
+          <p class="ml-5 is-inline-flex select-text is-size-5">Select a Park:</p>
+          <div class="select is-rounded is-small">
             <select id="park-select" class="ml-2">
               <option class="dropdown-item">---</option>
             </select>
           </div>
         </div>
       </div>
-
-
       <nav class="level-right">
         <ul class="is-inline-flex is-justify-content-space-between">
           <li class="mx-2"><a href="./index.html">Home</a></li>
@@ -109,7 +108,7 @@
         <p>
           Check the weather at a National park of your choosing and get
           up-to-date information and satelite imagery of the land. Create a
-          packing list so you don't forget anything for the trip.
+          packing list so you don't forget anything for the trip!
         </p>
       </div>
       <div class="column is-6">
@@ -122,6 +121,7 @@
           <input type="text" name="" id="pack-item" placeholder="Add item to packing list" />
           <button type="submit" id="add-item">Add</button>
         </form>
+        <br>
         <div class="weather">
           <h2>Current Weather</h2>
         </div>
@@ -136,9 +136,9 @@
   </main>
   <footer id="contact-us" class="footer has-text-centered">
     <ul class="is-underlined is-inline-flex is-justify-content-space-around">
-      <li>PH: 555-555-5555</li>
-      <li class="ml-6">E: thepackratteam@gmail.com</li>
-      <li class="ml-6"><a href="https://github.com/NazikBestCoder/Pack-Rat">GitHub Repo</a></li>
+      <li class="mx-6">PH: 555-555-5555</li>
+      <li class="mx-6">E: thepackratteam@gmail.com</li>
+      <li class="mx-6"><a href="https://github.com/NazikBestCoder/Pack-Rat">GitHub Repo</a></li>
     </ul>
 
   </footer>

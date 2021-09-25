@@ -7,10 +7,16 @@
 * {
   font-family: "Lora", serif;
   font-weight: bold;
+  scroll-behavior: smooth;
 }
 
 html {
   background-color: #f0dac0;
+}
+
+main,
+footer {
+  color: black;
 }
 
 a {
@@ -18,7 +24,7 @@ a {
 }
 
 #contact-us a {
-  color: #4a4a4a;
+  color: black;
 }
 
 .hero-image {
@@ -46,10 +52,6 @@ h2 {
   font-weight: bold;
 }
 
-#sel-section {
-  flex-wrap: wrap;
-}
-
 .footer {
   background-color: #f0dac0;
 }
@@ -71,5 +73,17 @@ h2 {
   }
   .park-select {
     width: 230px;
+  }
+  #search {
+    flex-direction: column;
+  }
+  .checklist h2 {
+    text-align: center;
+  }
+  .packing-list {
+    margin: 0 20% 0 45%;
+  }
+  form {
+    text-align: center;
   }
 }

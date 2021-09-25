@@ -52,7 +52,7 @@ function parkCodeHandler(parkData) {
     parkSelect.on("change", function (event) {
         event.stopPropagation();
         var parkLoc = ($(this).find(":selected").data())
-        
+
         lat = parkLoc.lat;
         lon = parkLoc.lon;
 
@@ -76,15 +76,15 @@ function nasaCall(lat, lon) {
 function weatherCall(lat, lon) {
     var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?units=imperial&lat=" + lat + "&lon=" + lon + "&appid=" + oWApiKey;
     fetch(weatherURL)
-        .then(function(response) {
+        .then(function (response) {
             return response.json();
         })
-        .then(function(data) {
+        .then(function (data) {
             var temp = data.current.temp;
             var wind = data.current.wind_speed;
             var humidity = data.current.humidity;
             var uvi = data.current.uvi;
-            
+
             $("#temp").text("Temp: " + temp + "°F");
             $("#wind").text("Wind Speed: " + wind + " MPH");
             $("#humidity").text("Humidity: " + humidity + "%");

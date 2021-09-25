@@ -71,4 +71,13 @@ h2 {
   #search {
     flex-direction: column;
   }
+  .checklist h2 {
+    text-align: center;
+  }
+  .packing-list {
+    margin: 0 20% 0 45%;
+  }
+  form {
+    text-align: center;
+  }
 }

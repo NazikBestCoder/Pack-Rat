@@ -139,6 +139,7 @@ addBtn.on("click", function (event) {
 
   toPack.push(listItem);
   localStorage.setItem("packingList", JSON.stringify(toPack));
+  $("#pack-item").val("");
 });
 
 // take lat and lon from parkOptions and pass it into NASA.

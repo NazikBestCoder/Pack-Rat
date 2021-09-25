@@ -44,9 +44,8 @@ stateSelect.on("change", function () {
 // on click for dropdown content, generate a park list dropdown for that state.
 
 function parkCodeHandler(parkData) {
-  $(selectText).text("Select a Park");
-  var parkSelect = $("<select>").attr("class", "select ml-2 park-select");
-  $(selSection).append(parkSelect);
+  var parkSelect = $("#park-select").empty();
+  parkSelect.append($("<option>").text("---").attr("class", "dropdown-item"));
   $.each(parkData, function (index, value) {
     var parkOptions = $("<option>")
       .text(value.fullName)

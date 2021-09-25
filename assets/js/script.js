@@ -59,7 +59,7 @@ function parkCodeHandler(parkData) {
         nasaCall(lat, lon);
         weatherCall(lat, lon);
     })
-}
+};
 
 function nasaCall(lat, lon) {
     var nasaURL = "https://api.nasa.gov/planetary/earth/imagery?lon=" + lon + "&lat=" + lat + "&dim=0.3&date=2020-09-24&api_key=" + nasaApiKey;
@@ -71,7 +71,7 @@ function nasaCall(lat, lon) {
             var nasaImage = URL.createObjectURL(data);
             $(".image").attr("src", nasaImage);
         })
-}
+};
 
 function weatherCall(lat, lon) {
     var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?units=imperial&lat=" + lat + "&lon=" + lon + "&appid=" + oWApiKey;
@@ -90,7 +90,7 @@ function weatherCall(lat, lon) {
             $("#humidity").text("Humidity: " + humidity + "%");
             $("#uvi").text("UV Index: " + uvi + " ultraviolets?!?!?");
         })
-}
+};
 
 function renderPackList() {
     var packListHistory = JSON.parse(localStorage.getItem("packingList"));
@@ -105,7 +105,7 @@ function renderPackList() {
         return;
     }
 
-}
+};
 
 renderPackList();
 
@@ -115,10 +115,10 @@ addBtn.on("click", function (event) {
     // on click of add button, i want to create a checkbox and label
     // make the val of listItem what the checkbox label will say
     packingList.append("<input type='checkbox'><label> " + listItem + "</label><br />");
-
+    $("#pack-item").val("");
     toPack.push(listItem);
     localStorage.setItem("packingList", JSON.stringify(toPack));
-})
+});
 
 // take lat and lon from parkOptions and pass it into NASA.
 // Make call for Weather nested in NASA api call.

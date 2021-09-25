@@ -46,10 +46,6 @@ h2 {
   font-weight: bold;
 }
 
-#sel-section {
-  flex-wrap: wrap;
-}
-
 .footer {
   background-color: #f0dac0;
 }
@@ -71,5 +67,8 @@ h2 {
   }
   .park-select {
     width: 230px;
+  }
+  #search {
+    flex-direction: column;
   }
 }

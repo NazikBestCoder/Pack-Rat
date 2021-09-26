@@ -10,7 +10,7 @@ This app functions simply, using two dropdown menus - one for state and one for 
 
 The app is live at this URL: https://nazikbestcoder.github.io/Pack-Rat/
 
-and here is a GIF walkthrough of the final product: ![Pack-Rat GIF](./assets/packratgif.gif) 
+and here is a GIF walkthrough of the final product: ![Pack-Rat GIF](./assets/images/packratgif.gif) 
 
 ## Credits
 
